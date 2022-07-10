@@ -52,7 +52,7 @@ func load_scene(scene : SceneTree, path: String) -> void:
 # Example call that saves the current scene: 
 # save_scene(get_tree(), "user://savegame.save") 
 #
-# To make in the scene Nodes persistent, add them to the group 'Persist'.
+# To make Nodes in the scene persistent, add them to the group 'Persist'.
 # You can also add a function called '_save()' to your persistent Node.
 # Return a dictionary containing extra values you want to save.
 # Example function that saves the visibility of the persistent Spatial or Node2D:   

@@ -54,7 +54,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This plugin adds an autoload singleton called <strong>Persistence</strong> 
+Scene saving and loading system for the Godot Engine 3 with the possibility of saving nested Nodes, each with its own state.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -75,6 +75,18 @@ The addon is made 100% in gdscript.
 <!-- GETTING STARTED -->
 ## Getting Started
 
+This plugin adds an autoload singleton called <strong>Persistence</strong>. You can save a scene by calling `save_scene` with the tree of the scene and a path. You can load this state into the scene again by calling `load_scene` with the same parameters.
+
+Example call that saves the current scene:
+```GDScript
+   save_scene(get_tree(), "user://savegame.save")
+```
+Example call that loads the state into the current scene:
+```GDScript
+   load_scene(get_tree(), "user://savegame.save") 
+```
+To make Nodes in the scene persistent, add them to the group `"Persist"`. The position and rotation of all members of the group will be saved on the `save_scene` call.
+
 
 ### Prerequisites
 
@@ -86,7 +98,7 @@ _Below is an example of how you can instruct your audience on installing and set
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/steffen-schumacher/godot-nested-saving-loading
    ```
 2. Copy the 'addons' folder into your project root
 3. In the Godot Editor go to Project -> Project Settings -> Plugins and check the 'Enable' button
