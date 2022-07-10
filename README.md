@@ -10,7 +10,6 @@
   <h3 align="center">Godot 3.5 nested saving and loading plugin</h3>
 
   <p align="center">
-    This plugin implements saving and loading of Nodes with the possibility of having nested persistent Nodes which each have their own distinct state.
     <br />
     <a href="https://github.com/steffen-schumacher/godot-nested-saving-loading"><strong>Explore the docs »</strong></a>
     <br />
@@ -51,7 +50,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Godot Nested Saving and Loading is a small library (only 131 lines of code) which implements saving and loading with the possibility of saving nested Nodes, each with its own state.
+Godot Nested Saving and Loading is a small library (only 131 lines of code) which implements saving and loading with the possibility of saving nested Nodes, which each have their own distinct state.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
