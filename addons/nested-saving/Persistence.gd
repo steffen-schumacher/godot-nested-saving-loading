@@ -3,7 +3,7 @@ extends Node
 # Properties that will be saved in any persistent object
 # Example Array that saves the visibility of all persistent Nodes:
 # ['visible']
-export(Array, String) var default_properties : Array
+export(Array, String) var default_properties : Array = []
 
 # saves the position of Node2Ds and Spatials based on tranform.origin
 export var save_position : bool = true
@@ -34,18 +34,6 @@ func load_scene(scene : SceneTree, path: String) -> void:
 		var parent : Node = scene.get_root().get_node(node_data["parent"])		
 		parent.add_child(node)
 		
-		if node.is_class("Spatial"):
-			if save_position:
-				node.transform.origin = Vector3(node_data["position"]["x"], node_data["position"]["y"], node_data["position"]["z"])
-			if save_rotation:
-				node.rotation_degrees = Vector3(node_data["rotation"]["x"], node_data["rotation"]["y"], node_data["rotation"]["z"])
-		
-		if node.is_class("Node2D"):
-			if save_position:
-				node.transform.origin = Vector2(node_data["position"]["x"], node_data["position"]["y"])
-			if save_rotation:
-				node.rotation_degrees = Vector2(node_data["rotation"]["x"], node_data["rotation"]["y"])
-		
 	file.close()
 
 # Creates a text file which stores the state of the scene.
@@ -53,7 +41,7 @@ func load_scene(scene : SceneTree, path: String) -> void:
 # save_scene(get_tree(), "user://savegame.save") 
 #
 # To make Nodes in the scene persistent, add them to the group 'Persist'.
-# You can also add a function called '_save()' to your persistent Node.
+# You can add a function called '_save()' to your persistent Node.
 # Return a dictionary containing extra values you want to save.
 # Example function that saves the visibility of the persistent Spatial or Node2D:   
 # func _save():
@@ -91,20 +79,37 @@ func save_scene(scene : SceneTree, path: String) -> void:
 
 # Convert Dictionary to Node
 func _deserialize(node_data : Dictionary) -> Node:
-	var node : Node = load(node_data["filename"]).instance()
+	var node : Node
+	var node_filename = node_data["filename"]
+	if node_filename != '':
+		node = load(node_data["filename"]).instance()
+	else:
+		node = ClassDB.instance(node_data["class"])
 	var components = node_data["components"]
 	for component in components:
 		for child in node.get_children():
-			if child.get_filename() == component["filename"]:
+			if child.name == component["name"]:
 				node.remove_child(child)
 				child.queue_free()
 				node.add_child(_deserialize(component))
 	
 	for key in node_data.keys():
-		if key == "filename" or key == "parent" or key == "position" or key == "rotation" or key == "components":
+		if key == "filename" or key == "parent" or key == "position" or key == "rotation" or key == "components" or key == "class" or key == "name":
 			continue
 		node.set(key, node_data[key])
+	
+	if node.is_class("Spatial"):
+			if save_position:
+				node.transform.origin = Vector3(node_data["position"]["x"], node_data["position"]["y"], node_data["position"]["z"])
+			if save_rotation:
+				node.rotation_degrees = Vector3(node_data["rotation"]["x"], node_data["rotation"]["y"], node_data["rotation"]["z"])
 		
+	if node.is_class("Node2D"):
+		if save_position:
+			node.transform.origin = Vector2(node_data["position"]["x"], node_data["position"]["y"])
+		if save_rotation:
+			node.rotation_degrees = Vector2(node_data["rotation"]["x"], node_data["rotation"]["y"])
+
 	return node
 
 # Convert Node to Dictionary
@@ -119,8 +124,10 @@ func _serialize(to_save : Node, additional_values : Dictionary = {}) -> Dictiona
 				data = _serialize(n)
 			if data != null:
 				components.append(data)
+	additional_values["class"] = to_save.get_class()
 	additional_values["filename"] = to_save.get_filename()
 	additional_values["components"] = components
+	additional_values["name"] = to_save.name
 	additional_values["parent"] = to_save.get_parent().get_path()
 	if to_save.is_class("Spatial"):
 		if save_position:
