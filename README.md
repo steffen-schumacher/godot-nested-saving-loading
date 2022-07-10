@@ -7,7 +7,7 @@
     <img src="icon.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Godot 3.4 nested saving and Loading plugin</h3>
+  <h3 align="center">Godot 3.5 nested saving and Loading plugin</h3>
 
   <p align="center">
     This plugin implements saving and loading of Nodes with the possibility of having nested persistent Nodes which each have their own distinct state.
