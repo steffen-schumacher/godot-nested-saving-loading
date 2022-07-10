@@ -3,10 +3,10 @@ extends EditorPlugin
 
 
 func _enter_tree():
-	add_autoload_singleton("Persistence", "res://addons/nested-saving/Persistence.tscn")
-	pass
+	if Engine.editor_hint:
+		add_autoload_singleton("Persistence", "res://addons/nested-saving/Persistence.tscn")
 
 
 func _exit_tree():
-	remove_autoload_singleton("Persistence")
-	pass
+	if Engine.editor_hint:
+		remove_autoload_singleton("Persistence")
