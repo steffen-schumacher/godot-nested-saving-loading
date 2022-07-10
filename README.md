@@ -54,8 +54,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 This plugin adds an autoload singleton called <strong>Persistence</strong> 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
