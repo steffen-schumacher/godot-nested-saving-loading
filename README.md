@@ -122,9 +122,11 @@ Example configuration that saves the visibility of all persistent Nodes:
 <strong>If you want to save nested Nodes, you have to make every Node between the root persistent Node and the child persistent, so the loading system can process the path to the parent Nodes correctly. Also must have a valid</strong>
 
 <strong>RIGHT:</strong>
+<br />
 <img src="https://i.imgur.com/d52gR9E.png" />
 
 <strong>WRONG:</strong>
+<br />
 <img src="https://i.imgur.com/antvmaZ.png" />
 
 
