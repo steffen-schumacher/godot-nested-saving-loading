@@ -129,5 +129,5 @@ Project Link: [https://github.com/steffen-schumacher/godot-nested-saving-loading
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[Godot.org]: https://godotengine.org/themes/godotengine/assets/logo.svg 
+[Godot.org]: https://godotengine.org/themes/godotengine/assets/press/logo_large_monochrome_light.png 
 [Godot-url]:https://godotengine.org/
