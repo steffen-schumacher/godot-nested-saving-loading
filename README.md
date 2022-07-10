@@ -51,7 +51,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Godot Nested Saving and Loading is a small library (only 124 lines of code) which implements saving and loading with the possibility of saving nested Nodes, each with its own state.
+Godot Nested Saving and Loading is a small library (only 131 lines of code) which implements saving and loading with the possibility of saving nested Nodes, each with its own state.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
