@@ -7,7 +7,7 @@
     <img src="icon.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Godot 3.5 nested saving and loading plugin</h3>
+  <h3 align="center">Nested saving and loading plugin for Godot 3.5</h3>
 
   <p align="center">
     <br />
@@ -50,7 +50,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Godot 3.5 nested saving and loading plugin is a small library (only 131 lines of code) which implements saving and loading with the possibility of saving nested Nodes, which each have their own distinct state.
+Nested saving and loading plugin for Godot 3.5 is a small library (only 131 lines of code) which implements saving and loading with the possibility of saving nested Nodes, which each have their own distinct state.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
