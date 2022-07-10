@@ -92,9 +92,9 @@ This plugin adds an autoload singleton called `Persistence`. Save a scene by cal
 
 | Property | Type | Description | Default value
 | :---: | :---: | :---: | :---: |
-| `default_properties` | `Array` | Default properties to save | []
-| `save_position` | bool | Should the position be saved | true
-| `save_rotation` | bool | Should the rotation be saved | true
+| `default_properties` | `Array` | Default properties to save | `[]`
+| `save_position` | `bool` | Should the position be saved | `true`
+| `save_rotation` | `bool` | Should the rotation be saved | `true`
 
 Example call that saves the current scene:
 ```GDScript
@@ -109,8 +109,8 @@ Example call that loads the state into the current scene:
 Example function that saves the visibility of the persistent Spatial or Node2D:   
 ```GDScript
    func _save():
-   return {
-     "visible": visible
+      return {
+      "visible": visible
    }
 ```
 Another way of saving additional values is adding the names of the properties, you want to save, to `Persistence.default_properties`. You can set these via GDScript or in the inspector by modifying the `addons/nested-saving/Persistence.tscn`.
@@ -122,10 +122,10 @@ Example configuration that saves the visibility of all persistent Nodes:
 <strong>If you want to save nested Nodes, you have to make every Node between the root persistent Node and the child persistent, so the loading system can process the path to the parent Nodes correctly. Also must have a valid</strong>
 
 <strong>RIGHT:</strong>
-<img src="https://imgur.com/a/KI6hQMp" />
+<img src="https://i.imgur.com/d52gR9E.png" />
 
 <strong>WRONG:</strong>
-<img src="https://imgur.com/a/wmPeYko" />
+<img src="https://i.imgur.com/antvmaZ.png" />
 
 
 <!-- CONTRIBUTING -->
