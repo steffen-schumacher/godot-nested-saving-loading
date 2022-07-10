@@ -64,7 +64,9 @@ This plugin adds an autoload singleton called <strong>Persistence</strong>
 
 The addon is made 100% in gdscript.
 
-[![Godot][Godot.org]][Godot-url]
+<a href="https://godotengine.org/">
+  <img src="https://godotengine.org/themes/godotengine/assets/press/logo_large_monochrome_light.png" height="200px" />
+</a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -127,7 +129,3 @@ Project Link: [https://github.com/steffen-schumacher/godot-nested-saving-loading
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[Godot.org]: https://godotengine.org/themes/godotengine/assets/press/logo_large_monochrome_light.png 
-[Godot-url]:https://godotengine.org/
