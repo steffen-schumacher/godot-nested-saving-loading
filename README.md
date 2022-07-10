@@ -36,16 +36,13 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -54,7 +51,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Scene saving and loading system for the Godot Engine 3 with the possibility of saving nested Nodes, each with its own state.
+Godot Nested Saving and Loading is a small library (only 124 lines of code) which implements saving and loading with the possibility of saving nested Nodes, each with its own state.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -62,7 +59,7 @@ Scene saving and loading system for the Godot Engine 3 with the possibility of s
 
 ### Built With
 
-The addon is made 100% in gdscript.
+The addon is made 100% in GDScript.
 
 <a href="https://godotengine.org/">
   <img src="https://godotengine.org/themes/godotengine/assets/press/logo_large_monochrome_light.png" height="200px" />
@@ -75,26 +72,9 @@ The addon is made 100% in gdscript.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This plugin adds an autoload singleton called <strong>Persistence</strong>. You can save a scene by calling `save_scene` with the tree of the scene and a path. You can load this state into the scene again by calling `load_scene` with the same parameters.
-
-Example call that saves the current scene:
-```GDScript
-   save_scene(get_tree(), "user://savegame.save")
-```
-Example call that loads the state into the current scene:
-```GDScript
-   load_scene(get_tree(), "user://savegame.save") 
-```
-To make Nodes in the scene persistent, add them to the group `"Persist"`. The position and rotation of all members of the group will be saved on the `save_scene` call.
-
-
-### Prerequisites
-
 The plugin is made for Godot 3.4.x and 3.5.x
 
 ### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
 1. Clone the repo
    ```sh
@@ -104,6 +84,49 @@ _Below is an example of how you can instruct your audience on installing and set
 3. In the Godot Editor go to Project -> Project Settings -> Plugins and check the 'Enable' button
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- USAGE -->
+## Usage
+
+This plugin adds an autoload singleton called `Persistence`. Save a scene by calling `save_scene` with the tree of the scene and a path. Load the saved state back into the scene by calling `load_scene` with the same parameters.
+
+| Property | Type | Description | Default value
+| :---: | :---: | :---: | :---: |
+| `default_properties` | `Array` | Default properties to save | []
+| `save_position` | bool | Should the position be saved | true
+| `save_rotation` | bool | Should the rotation be saved | true
+
+Example call that saves the current scene:
+```GDScript
+   Persistence.save_scene(get_tree(), "user://savegame.save")
+```
+Example call that loads the state into the current scene:
+```GDScript
+   Persistence.load_scene(get_tree(), "user://savegame.save") 
+```
+<strong>To make Nodes in the scene persistent, add them to the group `Persist`.</strong> By default, the position and the rotation of Spatial and Node2D extending Nodes will be saved and loaded. If the Node does not extend one of these Classes, only additional Values will be saved. You can add a function called `_save()` to your persistent Node, to save additional values. These will get assigned each to the property with a matching key when loading the scene.
+
+Example function that saves the visibility of the persistent Spatial or Node2D:   
+```GDScript
+   func _save():
+   return {
+     "visible": visible
+   }
+```
+Another way of saving additional values is adding the names of the properties, you want to save, to `Persistence.default_properties`. You can set these via GDScript or in the inspector by modifying the `addons/nested-saving/Persistence.tscn`.
+
+Example configuration that saves the visibility of all persistent Nodes:
+```GDScript
+   Persistence.default_properties = ['visible']
+```
+<strong>If you want to save nested Nodes, you have to make every Node between the root persistent Node and the child persistent, so the loading system can process the path to the parent Nodes correctly. Also must have a valid</strong>
+
+<strong>RIGHT:</strong>
+<img src="https://imgur.com/a/KI6hQMp" />
+
+<strong>WRONG:</strong>
+<img src="https://imgur.com/a/wmPeYko" />
+
 
 <!-- CONTRIBUTING -->
 ## Contributing
