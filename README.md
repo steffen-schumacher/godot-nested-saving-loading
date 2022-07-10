@@ -123,11 +123,12 @@ Example configuration that saves the visibility of all persistent Nodes:
 
 <strong>Right:</strong>
 <br />
-<img src="https://i.imgur.com/d52gR9E.png" />
+<img src="https://i.imgur.com/antvmaZ.png" />
 
 <strong>Wrong:</strong>
 <br />
-<img src="https://i.imgur.com/antvmaZ.png" />
+<img src="https://i.imgur.com/d52gR9E.png" />
+
 
 
 <!-- CONTRIBUTING -->
