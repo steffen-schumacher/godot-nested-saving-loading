@@ -118,7 +118,7 @@ Example configuration that saves the visibility of all persistent Nodes:
 ```GDScript
    Persistence.default_properties = ['visible']
 ```
-<strong>If you want to save nested Nodes, you have to make every Node between the root persistent Node and the child persistent, so the loading system can process the path to the parent Nodes correctly. Also must have a valid</strong>
+<strong>If you want to save nested Nodes, you have to make every Node between the root persistent Node and the child persistent, so the loading system can process the path to the parent Nodes correctly.</strong>
 
 <strong>Right:</strong>
 <br />
