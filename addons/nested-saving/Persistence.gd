@@ -94,7 +94,7 @@ func _deserialize(node_data : Dictionary) -> Node:
 				node.add_child(_deserialize(component))
 	
 	for key in node_data.keys():
-		if key == "filename" or key == "parent" or key == "position" or key == "rotation" or key == "components" or key == "class" or key == "name":
+		if key in ["filename", "parent", "position", "rotation", "components", "class", "name"]:
 			continue
 		node.set(key, node_data[key])
 	
