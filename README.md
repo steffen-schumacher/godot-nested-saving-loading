@@ -103,7 +103,7 @@ Example call that loads the state into the current scene:
 ```GDScript
    Persistence.load_scene(get_tree(), "user://savegame.save") 
 ```
-<strong>To make Nodes in the scene persistent, add them to the group `Persist`.</strong> By default, the position and the rotation of Spatial and Node2D extending Nodes will be saved and loaded. If the Node does not extend one of these Classes, only additional Values will be saved. You can add a function called `_save()` to your persistent Node, to save additional values. These will get assigned each to the property with a matching key when loading the scene.
+<strong>To make Nodes in the scene persistent, add them to the group `Persist`.</strong> By default, the position and the rotation of Spatial and Node2D extending Nodes will be saved and loaded. If the Node does not extend one of these classes, only additional values will be saved. You can add a function called `_save()` to your persistent Node, to save additional values. These will get assigned each to the property with a matching key when loading the scene.
 
 Example function that saves the visibility of the persistent Spatial or Node2D:   
 ```GDScript
